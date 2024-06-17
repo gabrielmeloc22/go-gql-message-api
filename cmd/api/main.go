@@ -26,7 +26,6 @@ func init() {
 }
 
 func main() {
-
 	port := DEFAULT_PORT
 	if val, ok := os.LookupEnv("PORT"); ok {
 		port = val
