@@ -1,0 +1,20 @@
+type Chat {
+  id: ID!
+  name: String!
+  members: [User] @goField(forceResolver: true)
+  createdAt: Time!
+  updatedAt: Time!
+}
+
+input NewChatInput {
+  name: String!
+  users: [ID]
+}
+
+extend type Mutation {
+  newChat(input: NewChatInput!): Chat! @authenticated
+}
+
+extend type Query {
+  chats: [Chat] @authenticated
+}

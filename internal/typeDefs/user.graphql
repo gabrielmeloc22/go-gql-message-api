@@ -1,0 +1,33 @@
+type User {
+  id: ID!
+  username: String!
+  createdAt: Time!
+  updatedAt: Time!
+}
+
+input RegisterInput {
+  username: String!
+  password: String!
+}
+
+type RegisterPayload {
+  token: String!
+}
+
+input LoginInput {
+  username: String!
+  password: String!
+}
+
+type LoginPayload {
+  token: String!
+}
+
+extend type Query {
+  me: User @authenticated
+}
+
+extend type Mutation {
+  login(input: LoginInput!): LoginPayload!
+  register(input: RegisterInput!): RegisterPayload!
+}

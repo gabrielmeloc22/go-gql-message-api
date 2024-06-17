@@ -1,0 +1,11 @@
+directive @goField(
+  forceResolver: Boolean
+  name: String
+) on FIELD_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @authenticated on FIELD_DEFINITION
+
+scalar Time
+
+type Query
+type Mutation

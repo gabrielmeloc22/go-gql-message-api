@@ -1,0 +1,22 @@
+type Message {
+  id: ID!
+  content: String!
+  from: User! @goField(forceResolver: true)
+  chat: Chat! @goField(forceResolver: true)
+  createdAt: Time!
+  updatedAt: Time!
+}
+
+input NewMessageInput {
+  content: String!
+  to: ID!
+  createdAt: Time!
+}
+
+extend type Query {
+  messages(chatId: ID!): [Message!]! @authenticated
+}
+
+extend type Mutation {
+  newMessage(input: NewMessageInput!): Message! @authenticated
+}
